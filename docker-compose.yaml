@@ -1,0 +1,34 @@
+services:
+  hr:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - 24308:5432
+    volumes:
+      - hr:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: coa
+      POSTGRES_PASSWORD: coa
+      POSTGRES_DB: hr
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "11652:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: j.4.bergen@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 3M#^o22PSsZRjf
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+volumes:
+  hr:
+  pgadmin:
+
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080

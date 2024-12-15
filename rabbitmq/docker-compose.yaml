@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+    rabbitmq:
+        image: 'rabbitmq:3-management'
+        environment:
+            - RABBITMQ_DEFAULT_PASS=coa
+            - RABBITMQ_DEFAULT_USER=coa
+        hostname: my-rabbit
+        ports:
+          - 27415:8080
+          - 5672:5672
+          - 15672:15672
